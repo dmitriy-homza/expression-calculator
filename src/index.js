@@ -24,8 +24,10 @@ function expressionCalculator(expr) {
     let checkBrackets = array;
     checkBrackets = checkBrackets.filter(element => element === '(' | element === ')').join('');
     for (let i=0; i<checkBrackets.length; i++){
-        checkBrackets = checkBrackets.replace(/\(\)/, '');
-        i=i-1;
+        if (checkBrackets.includes('()')) {
+            checkBrackets = checkBrackets.replace(/\(\)/, '');
+            i=i-1;
+        }
     }
     if (checkBrackets!=='' & checkBrackets!=='()') {    
         throw ("ExpressionError: Brackets must be paired");
